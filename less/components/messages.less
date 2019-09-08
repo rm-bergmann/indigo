@@ -1,0 +1,29 @@
+.messages {
+  margin: 0.5rem 0 2rem 0;
+  padding: 1rem;
+
+  ul {
+    li {
+      list-style-type: none;
+    }
+  }
+
+  &--error {
+    background: lighten(@error-color, 45%);
+
+    .alert {
+      color: @error-color;
+    }
+
+    pre {
+      font-size: 0.7rem;
+      background: transparent;
+      border: none;
+    }
+  }
+
+  &--status {
+    background-color: #bfeee0;
+    color: @success-color;
+  }
+}

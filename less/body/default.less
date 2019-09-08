@@ -1,0 +1,206 @@
+/*
+ * These styles are Drupal specific selectors which are overrides 
+ * that improve spacing and readability in this theme. 
+ * 
+ * @Todo
+ * Extract styles into individual component files
+ *
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#skip a:link,
+#skip a:hover,
+#skip a:visited {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#skip a:active,
+#skip a:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
+// bug fix with views 2 edit links.
+div.view div.views-admin-links {
+  width: auto;
+}
+
+// Rollover edit links for blocks.
+div.block {
+  position: relative;
+
+  .edit {
+    display: none;
+    position: absolute;
+    right: -20px;
+    top: -5px;
+    z-index: 40;
+    padding: 3px 8px 0;
+    font-size: 10px;
+    line-height: 16px;
+    background-color: white;
+    border: 1px solid #cccccc;
+
+    a {
+      display: block;
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.node-form {
+  margin-top: 1rem;
+  border: 1px solid @table-border-color;
+  padding: 2rem;
+
+  @media @desktop-small-min {
+    width: 70%;
+  }
+}
+
+.user-login-form {
+  margin: 2rem auto 0 auto;
+}
+
+.user-pass {
+  p {
+    .description();
+  }
+}
+
+.description {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: @grey-dark;
+  margin-top: 0.6rem;
+}
+
+.form-item {
+  margin-top: 1.6rem;
+}
+
+.filter-wrapper {
+  background-color: white;
+}
+
+.filter-guidelines {
+  li {
+    font-size: 0.7rem;
+    margin: 0.6rem 0;
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+}
+
+.link-edit-summary {
+  padding: 0.2rem;
+  color: @primary-color;
+  background-color: transparent;
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+.draggable {
+  a.tabledrag-handle {
+    .handle {
+      // Useful Mixin: When an element's width & height are always the same
+      // This allows us to change both value at the same time
+      #display.dimensions(equal, 24px);
+      display: block;
+    }
+  }
+}
+
+.field--type-image,
+.field--type-file {
+  .form-managed-file {
+    background: @grey-light;
+    border: 1px solid @grey-dark;
+    padding: 1rem;
+    min-height: 150px;
+  }
+}
+
+.js-form-type-checkbox {
+  display: flex;
+
+  input {
+    margin-top: 2px;
+  }
+
+  label {
+    margin-left: 4px;
+  }
+}
+
+details {
+  summary {
+    cursor: pointer;
+  }
+}
+
+// @Todo Improve styling and positioning of vertical tabs menu and add this to it's own component file.
+.js-form-type-vertical-tabs {
+  padding: 1rem;
+
+  .vertical-tabs {
+    &__panes {
+      details {
+        padding-left: 1rem;
+      }
+    }
+  }
+}
+
+.field--type-link {
+  table {
+    td {
+      padding: 1rem;
+    }
+  }
+
+  .label {
+    #label.default(bold);
+  }
+
+  .form-item {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type='text'],
+  input[type='url'] {
+    height: 32px;
+  }
+}
+
+#edit-actions {
+  margin-top: 1rem;
+}
+
+#edit-delete {
+  #button.link(@error-color);
+  opacity: 0.6;
+}
+
+div.text-full {
+  margin: 1rem 0;
+}
+
+[data-drupal-selector='edit-body-0-format-help-about'] {
+  font-size: 0.8rem;
+}

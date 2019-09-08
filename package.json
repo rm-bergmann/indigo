@@ -1,0 +1,23 @@
+{
+  "name": "gulp-less-watch",
+  "version": "0.0.1",
+  "private": "true",
+  "description": "watch and autoprefix less files",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "bs-html-injector": "^3.0.3",
+    "cypress": "^3.4.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-less": "^4.0.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^5.0.1",
+    "less-style-library": "^1.2.5",
+    "path": "^0.12.7"
+  }
+}

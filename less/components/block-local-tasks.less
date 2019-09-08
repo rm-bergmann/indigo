@@ -1,0 +1,45 @@
+// @Todo: Add a unique classname to this div
+// Avoid using ID's
+#block-indigo-local-tasks {
+  background: black;
+  border-bottom: 2px solid white;
+}
+
+// @Todo: Override Drupal's HTML and prevent both
+// <nav> and <ul> elements using the same classname
+nav.tabs {
+  padding-top: 0.5rem;
+}
+
+ul.tabs {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+
+  li {
+    min-width: 100px;
+    display: inline-block;
+    margin: 0 4px;
+
+    a {
+      color: @white;
+      text-align: center;
+      background: @primary-color;
+      display: block;
+      min-width: 100px;
+      height: auto;
+      text-decoration: none;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid white;
+      border-bottom: none;
+
+      &:hover {
+        background: lighten(@primary-color, 10%);
+      }
+
+      &.is-active {
+        background-color: lighten(@primary-color, 20%);
+      }
+    }
+  }
+}

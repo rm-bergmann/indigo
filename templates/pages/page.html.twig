@@ -1,0 +1,37 @@
+{% if page.tabs %}
+  {{ page.tabs }}
+{% endif %}
+
+{% include '/themes/indigo/templates/components/header.html.twig' %}
+
+{% if page.primary_menu %}
+  <div class="site-navigation">
+    <div class="content-container">
+      {{ page.primary_menu }}
+    </div>
+  </div>
+{% endif %}
+
+{% if page.featured %}
+  {{ page.featured }}
+{% endif %}
+
+{% if page.highlighted %}
+  <div class="highlighted">
+    {{ page.highlighted }}
+  </div>
+{% endif %}
+
+{% if action_links %}
+  <ul class="action-links">
+    {{ action_links }}
+  </ul>
+{% endif %}
+
+{% if page.content %}
+  <article class="content-container content-container--page">
+    {{ page.content }}
+  </article>
+{% endif %}
+
+{% include '/themes/indigo/templates/components/footer.html.twig' %}

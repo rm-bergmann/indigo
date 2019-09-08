@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="content-container">
+    <div class="site-header__logo">
+      <a 
+        href="{{ front_page }}" 
+        title="{{ 'Home'|t }}" 
+        rel="home"
+        class="site-header__link"
+        >
+          {{ site_name }} 
+      </a>
+    </div>
+
+    {% if page.header %}
+      <div class="site-header__acount-menu">
+        {{ page.header }}
+      </div>
+    {% endif %}
+  </div>
+</header>

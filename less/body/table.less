@@ -1,0 +1,31 @@
+// @Todo: Investigate why Drupal is not adding '.odd' and '.even' striping classes
+// to tables. Tables include data-striping=1 attribute but no striping classes.
+@table-border-color: darken(@grey-light, 40%);
+
+table {
+  border: 1px solid @table-border-color;
+  width: 100%;
+  margin-top: 1rem;
+
+  thead {
+    border-bottom: 1px solid @table-border-color;
+  }
+
+  tr.even {
+    background-color: @grey-light;
+  }
+
+  th {
+    text-align: left;
+    background-color: @grey-light;
+    padding: 10px;
+    font-weight: 800;
+    border-right: 1px solid @table-border-color;
+  }
+
+  td {
+    padding: 10px;
+    border-right: 1px solid @table-border-color;
+    border-bottom: 1px solid @table-border-color;
+  }
+}
