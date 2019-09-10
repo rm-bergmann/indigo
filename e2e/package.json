@@ -4,8 +4,8 @@
   "description": "End to End tests",
   "main": "index.js",
   "scripts": {
-    "cy:open-dev": "cypress open --config baseUrl=http://drupal-example.docker.amazee.io/",
-    "cy:run-dev": "cypress run --browser chrome --config baseUrl=http://drupal-example.docker.amazee.io/",
+    "cy:open-dev": "cypress open --config baseUrl=localhost:4000",
+    "cy:run-dev": "cypress run --browser chrome --config baseUrl=localhost:4000",
     "cy:run": "cypress run"
   },
   "author": "Rick Bergmann",
