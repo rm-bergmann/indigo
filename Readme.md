@@ -20,7 +20,7 @@ I have included a basic, clean template with decent spacing around elements.
 Gulp builds the CSS and Script files. CSS and HTML / twig file changes are automatically injected into the browser
 without the need to reload (including debugging statements with dd()).
 
-Reloads are triggered when script file changes are saved as functions may be called on page load. Reloads are also
+Reloads are triggered when script file changes are saved, as functions may be called on page load. Reloads are also
 triggered when the indigo.theme file changes are saved.
 
 Babel, babelify and browserify are included to transpile ES6 modules into browser supported Javascript.
