@@ -4,10 +4,10 @@ const watch = require('gulp-watch');
 const prefix = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
 const cleanCSS = require('gulp-clean-css');
-const browserSync = require('browser-sync').create();
 const babel = require('gulp-babel');
-const uglify = require('gulp-uglify');
+const browserify = require('gulp-browserify');
 const sourcemaps = require('gulp-sourcemaps');
+const browserSync = require('browser-sync').create();
 const htmlInjector = require('bs-html-injector');
 const reload = browserSync.reload;
 const buildDir = './build';
@@ -40,11 +40,11 @@ function buildScripts() {
     .src('./js/script.js')
     .pipe(sourcemaps.init())
     .pipe(babel())
+    .pipe(browserify({ transform: ['babelify'] }))
     .pipe(gulp.dest(buildDir))
     .pipe(reload({ stream: true }));
 }
 
-// Use With Browser Sync
 function syncBrowsers() {
   browserSync.use(htmlInjector, {});
 
