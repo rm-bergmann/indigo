@@ -1,0 +1,16 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "End to End tests",
+  "main": "index.js",
+  "scripts": {
+    "cy:open-dev": "cypress open --config baseUrl=http://drupal-example.docker.amazee.io/",
+    "cy:run-dev": "cypress run --browser chrome --config baseUrl=http://drupal-example.docker.amazee.io/",
+    "cy:run": "cypress run"
+  },
+  "author": "Rick Bergmann",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^3.4.1"
+  }
+}

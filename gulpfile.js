@@ -1,41 +1,70 @@
-var gulp = require('gulp');
-var path = require('path');
-var less = require('gulp-less');
-var watch = require('gulp-watch');
-var prefix = require('gulp-autoprefixer');
-var plumber = require('gulp-plumber');
-var cleancss = require('gulp-clean-css');
-var browserSync = require('browser-sync').create();
-var htmlInjector = require('bs-html-injector');
-var reload = browserSync.reload;
+const gulp = require('gulp');
+const less = require('gulp-less');
+const watch = require('gulp-watch');
+const prefix = require('gulp-autoprefixer');
+const plumber = require('gulp-plumber');
+const cleanCSS = require('gulp-clean-css');
+const browserSync = require('browser-sync').create();
+const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
+const htmlInjector = require('bs-html-injector');
+const reload = browserSync.reload;
+const buildDir = './build';
 
-gulp.task('browser-sync', function() {
+function buildStyles() {
+  return gulp
+    .src('./less/style.less') // only compile the entry file
+    .pipe(plumber())
+    .pipe(
+      less({
+        paths: ['./less/*/*']
+      })
+    )
+    .pipe(prefix('last 4 versions', '> 1%', 'ie 11', 'ios 7'))
+    .pipe(plumber.stop())
+    .pipe(
+      cleanCSS({
+        advanced: false,
+        agressiveMerging: false,
+        compatibility: 'ie11',
+        processImport: false
+      })
+    )
+    .pipe(gulp.dest(buildDir))
+    .pipe(reload({ stream: true }));
+}
 
+function buildScripts() {
+  return gulp
+    .src('./js/script.js')
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(gulp.dest(buildDir))
+    .pipe(reload({ stream: true }));
+}
+
+// Use With Browser Sync
+function syncBrowsers() {
   browserSync.use(htmlInjector, {});
 
-  gulp.src('./less/style.less')
-    .pipe(plumber())
-    .pipe(less({
-      paths: ['./less/']
-    }))
-    .pipe(prefix('last 3 version', '> 1%'))
-    .pipe(plumber.stop())
-    .pipe(cleancss())
-    .pipe(gulp.dest('./css'))
-    .pipe(reload({stream: true}));
-});
-
-gulp.task('serve', ['browser-sync'], function() {
-
-  browserSync.init({
+  return browserSync.init({
     proxy: 'http://drupal-example.docker.amazee.io',
     open: false,
     port: 4000
   });
+}
 
-  gulp.watch(['./less/**/*.less', '!node_modules/**/*.js'], ['browser-sync']);
-  gulp.watch(['**/*.js', '!node_modules/**/*.js']).on('change', reload);
-  gulp.watch('*.theme').on('change', reload);
-  gulp.watch(['**/*/.twig'], htmlInjector);
+function watchFiles() {
+  watch(['./less/**/*.less'], buildStyles, htmlInjector);
+  watch(['./js/*.js'], buildScripts, htmlInjector);
+  watch(['./js/*.js']).on('change', reload);
+  watch(['./templates/*/*.twig', './*.theme'], htmlInjector);
+  watch('./*.theme').on('change', reload);
+}
 
-});
+exports.buildStyles = buildStyles;
+exports.buildScripts = buildScripts;
+exports.syncBrowsers = syncBrowsers;
+exports.watchFiles = watchFiles;
+exports.serve = gulp.parallel(buildStyles, buildScripts, syncBrowsers, watchFiles);

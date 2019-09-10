@@ -2,6 +2,6 @@ base:
   version: 1.0
   css:
     theme:
-      css/style.css: {}
+      build/style.css: {}
   js:
-    js/script.js: {}
+    build/script.js: {}
