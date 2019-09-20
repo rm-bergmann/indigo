@@ -12,6 +12,9 @@ const htmlInjector = require('bs-html-injector');
 const reload = browserSync.reload;
 const buildDir = './build';
 
+// Set Project Domain to proxy:
+const proxyDomain = '127.0.0.1';
+
 function buildStyles() {
   return gulp
     .src('./less/style.less') // only compile the entry file
@@ -49,7 +52,7 @@ function syncBrowsers() {
   browserSync.use(htmlInjector, {});
 
   return browserSync.init({
-    proxy: 'http://drupal-example.docker.amazee.io',
+    proxy: proxyDomain,
     open: false,
     port: 4000
   });
