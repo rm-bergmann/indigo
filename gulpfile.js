@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const less = require('gulp-less');
+const lessGlob = require('gulp-less-glob');
 const watch = require('gulp-watch');
 const prefix = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
@@ -19,6 +20,7 @@ function buildStyles() {
   return gulp
     .src('./less/style.less') // only compile the entry file
     .pipe(plumber())
+    .pipe(lessGlob())
     .pipe(
       less({
         paths: ['./less/*/*']
