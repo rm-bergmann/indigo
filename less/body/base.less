@@ -1,3 +1,104 @@
+/////////////////    Base Less file:    //////////////////
+//                                                      //
+// Includes reset styles and default html elemnt styles //
+// Should not include classes or ID's.                  //
+//                                                      //
+//////////////////////////////////////////////////////////
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 14px;
 
@@ -11,10 +112,60 @@ html {
 }
 
 body {
-  color: @grey-dark;
-  background-color: white;
+  #display.colors(@grey-dark, white);
   font-family: @primary-font, sans-serif;
   line-height: 1.3;
+}
+
+// HTML5 display-role reset for older browsers
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+// HTML5 hidden-attribute fix for newer browsers
+*[hidden] {
+  display: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+nav,
+section {
+  display: block;
 }
 
 a {
@@ -75,6 +226,7 @@ input {
   &[type='text'],
   &[type='password'],
   &[type='number'],
+  &[type='search'],
   &[type='email'],
   &[type='url'] {
     height: 44px;
@@ -90,6 +242,7 @@ input {
   }
 }
 
+// .form-submit needs to be moved out of here
 button,
 .form-submit {
   #button.flat(@primary-color);
