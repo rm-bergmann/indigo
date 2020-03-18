@@ -8,13 +8,6 @@
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\taxonomy\Entity\Term;
 
-// Auto-rebuild the theme registry during theme development.
-// @todo Doesn't seem to notice the template name changes.
-if (theme_get_setting('clear_registry')) {
-  \Drupal::service('theme_handler')->rebuildThemeData();
-  \Drupal::service('theme.registry')->reset();
-}
-
 /**
  * Prepares variables for the html.html.twig template.
  */
@@ -65,7 +58,8 @@ function indigo_preprocess_page(&$variables) {
     ->getStorage('node_type')
     ->loadMultiple();
   
-  $variables['node_types'] = $node_types;
-  $variables['site_name'] = $config->get('name');
+  $variables['node_types']  = $node_types;
+  $variables['site_name']   = $config->get('name');
   $variables['site_slogan'] = $config->get('slogan');
+  $variables['theme_logo']  = file_get_contents(__DIR__ . '/' . 'logo.svg');
 }
