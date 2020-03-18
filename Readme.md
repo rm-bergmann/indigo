@@ -3,6 +3,12 @@
 This is my custom starter Drupal 8 theme which I have been using for my Drupal 8 projects. This theme includes the
 tools I use which I find useful and enable me to design rapidly in the browser.
 
+# Note
+
+If you are looking for a more scalable architecture head over to [D8 Boilerplate](1) which includes this theme.
+D8 Boilerplate runs Gulp & Cypress from the Drupal root and is set up for multi theme development using 1 instance of Gulp.
+Plus it comes with a lot of boilerplate config for Docker and other Front End / Javascript packages.
+
 I have included a basic, clean template with decent spacing around elements.
 
 ## Features
@@ -29,3 +35,5 @@ Less is my CSS preprocessor of choice, mainly because of it's namespacing featur
 useful Less namespaced mixins which are helpful when designing in the browser, and speed up development time.
 
 Cypress is installed in the e2e directory and is a seperate dependancy because it takes time to install.
+
+[1]: https://github.com/rm-bergmann/d8-boilerplate
