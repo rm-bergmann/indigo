@@ -229,16 +229,25 @@ input {
   &[type='search'],
   &[type='email'],
   &[type='url'] {
-    height: 44px;
-    padding: 6px;
-    font-size: 1rem;
-    border: 1px solid @table-border-color;
-    width: 100%;
-    box-shadow: 1px 1px 1px @grey-light;
+    .input-field();
 
     &:focus {
       border-color: @primary-color;
     }
+  }
+}
+
+.input-field() {
+  height: 52px;
+  padding: 4px 6px;
+  font-size: 1.5rem;
+  line-height: 1;
+  width: 100%;
+  border: 1px solid @table-border-color;
+  box-shadow: 1px 1px 1px @grey-light;
+
+  @media @tablet-large-min {
+    max-width: 350px;
   }
 }
 
